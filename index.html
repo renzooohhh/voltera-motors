@@ -4,27 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VoltEra Motors | Next-Gen Electric Mobility</title>
-    <!-- Tailwind CSS CDN -->
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts: Orbitron & Inter -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@500;700;800;900&display=swap" rel="stylesheet">
 
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        void: '#05070b',
-                        surface: '#0b0f19',
-                        surfaceLight: '#141b2d',
+                        void: '#04060a',
+                        surface: '#090d16',
+                        surfaceLight: '#111726',
                         cyanGlow: '#00f3ff',
+                        emeraldGlow: '#10b981',
                         magentaNeon: '#ff007f',
-                        purpleNeon: '#9d4edd',
-                        silverAccent: '#e2e8f0',
+                        purpleNeon: '#8b5cf6',
                     },
                     fontFamily: {
                         orbitron: ['Orbitron', 'sans-serif'],
@@ -33,21 +33,16 @@
                     animation: {
                         'float': 'float 6s ease-in-out infinite',
                         'pulse-glow': 'pulseGlow 2.5s ease-in-out infinite',
-                        'scanline': 'scanline 8s linear infinite',
-                        'spin-slow': 'spin 25s linear infinite',
+                        'spin-slow': 'spin 30s linear infinite',
                     },
                     keyframes: {
                         float: {
-                            '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
-                            '50%': { transform: 'translateY(-18px) rotate(1deg)' },
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-14px)' },
                         },
                         pulseGlow: {
                             '0%, 100%': { opacity: '0.6', filter: 'drop-shadow(0 0 15px rgba(0,243,255,0.4))' },
                             '50%': { opacity: '1', filter: 'drop-shadow(0 0 35px rgba(0,243,255,0.85))' },
-                        },
-                        scanline: {
-                            '0%': { transform: 'translateY(-100%)' },
-                            '100%': { transform: 'translateY(1000%)' }
                         }
                     }
                 }
@@ -58,21 +53,21 @@
     <style>
         /* Custom Scrollbar */
         ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #05070b; }
+        ::-webkit-scrollbar-track { background: #04060a; }
         ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
         ::-webkit-scrollbar-thumb:hover { background: #00f3ff; }
 
         /* Neon Glassmorphism */
         .glass-panel {
-            background: rgba(11, 15, 25, 0.8);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            background: rgba(9, 13, 22, 0.82);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
             border: 1px solid rgba(0, 243, 255, 0.18);
         }
 
         .glass-card {
-            background: rgba(20, 27, 45, 0.65);
-            backdrop-filter: blur(14px);
+            background: rgba(17, 23, 38, 0.65);
+            backdrop-filter: blur(16px);
             border: 1px solid rgba(255, 255, 255, 0.08);
             transition: transform 0.1s ease-out, border-color 0.3s ease, box-shadow 0.3s ease;
             transform-style: preserve-3d;
@@ -84,13 +79,12 @@
             box-shadow: 0 25px 50px -12px rgba(0, 243, 255, 0.25);
         }
 
-        .text-glow-cyan { text-shadow: 0 0 15px rgba(0, 243, 255, 0.7); }
-        .text-glow-magenta { text-shadow: 0 0 15px rgba(ff, 0, 127, 0.7); }
+        .text-glow-cyan { text-shadow: 0 0 20px rgba(0, 243, 255, 0.7); }
 
         /* Cyberpunk Button Effects */
         .btn-cyber {
             position: relative;
-            background: linear-gradient(135deg, rgba(0, 243, 255, 0.25), rgba(255, 0, 127, 0.25));
+            background: linear-gradient(135deg, rgba(0, 243, 255, 0.25), rgba(16, 185, 129, 0.25));
             border: 1px solid #00f3ff;
             transition: all 0.3s ease;
             overflow: hidden;
@@ -108,12 +102,12 @@
         .btn-cyber:hover::before { left: 100%; }
         .btn-cyber:hover {
             box-shadow: 0 0 30px rgba(0, 243, 255, 0.7);
-            background: linear-gradient(135deg, rgba(0, 243, 255, 0.45), rgba(255, 0, 127, 0.45));
+            background: linear-gradient(135deg, rgba(0, 243, 255, 0.5), rgba(16, 185, 129, 0.5));
         }
 
         /* Grid Background */
         .bg-grid {
-            background-size: 45px 45px;
+            background-size: 50px 50px;
             background-image: 
                 linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
                 linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
@@ -122,18 +116,13 @@
         /* Scroll Reveal Animation */
         .reveal-on-scroll {
             opacity: 0;
-            transform: translateY(40px);
-            transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+            transform: translateY(35px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .reveal-on-scroll.visible {
             opacity: 1;
             transform: translateY(0);
-        }
-
-        /* HUD Scanner overlay */
-        .hud-line {
-            background: linear-gradient(180deg, transparent, rgba(0,243,255,0.3), transparent);
         }
     </style>
 </head>
@@ -141,17 +130,17 @@
 <body class="bg-void text-slate-200 font-sans antialiased selection:bg-cyanGlow selection:text-void overflow-x-hidden">
 
     <!-- Interactive Particle Web Background Canvas -->
-    <canvas id="bg-canvas" class="fixed top-0 left-0 w-full h-full pointer-events-none z-0 opacity-50"></canvas>
+    <canvas id="bg-canvas" class="fixed top-0 left-0 w-full h-full pointer-events-none z-0 opacity-40"></canvas>
 
-    <!-- Floating HUD Telemetry Widget (Top Right Desktop) -->
-    <div class="fixed top-24 right-6 z-40 hidden xl:flex flex-col gap-2 glass-panel p-3 rounded-2xl border-cyanGlow/20 text-[10px] font-orbitron tracking-widest text-slate-400">
+    <!-- Floating HUD Telemetry Widget -->
+    <div class="fixed top-24 right-6 z-40 hidden xl:flex flex-col gap-2 glass-panel p-3.5 rounded-2xl border-cyanGlow/30 text-[10px] font-orbitron tracking-widest text-slate-400">
         <div class="flex items-center space-x-2">
-            <span class="w-2 h-2 rounded-full bg-cyanGlow animate-ping"></span>
-            <span>SYSTEM STATUS: <span class="text-cyanGlow font-bold">ONLINE (800V)</span></span>
+            <span class="w-2.5 h-2.5 rounded-full bg-cyanGlow animate-ping"></span>
+            <span>GRID SYSTEM: <span class="text-cyanGlow font-bold">ONLINE (800V)</span></span>
         </div>
-        <div class="flex justify-between gap-4 border-t border-white/10 pt-1">
-            <span>GRID LOAD: <span class="text-white">99.8%</span></span>
-            <span>AUTONOMY: <span class="text-magentaNeon">LVL 4 ACTIVE</span></span>
+        <div class="flex justify-between gap-4 border-t border-white/10 pt-1.5">
+            <span>NETWORK LOAD: <span class="text-white">99.4%</span></span>
+            <span>AUTONOMY: <span class="text-emeraldGlow font-bold">LVL 4 ACTIVE</span></span>
         </div>
     </div>
 
@@ -161,7 +150,7 @@
             <div class="flex items-center justify-between h-20">
                 <!-- Brand Logo -->
                 <a href="#" onclick="switchTab('home')" class="flex items-center space-x-3 group">
-                    <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-cyanGlow via-magentaNeon to-purpleNeon p-[2px] shadow-lg shadow-cyanGlow/30 group-hover:shadow-cyanGlow/60 transition-all">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-cyanGlow via-emeraldGlow to-purpleNeon p-[2px] shadow-lg shadow-cyanGlow/30 group-hover:shadow-cyanGlow/60 transition-all">
                         <div class="w-full h-full bg-void rounded-[10px] flex items-center justify-center">
                             <i class="fa-solid fa-bolt text-cyanGlow text-xl group-hover:scale-110 transition-transform"></i>
                         </div>
@@ -174,7 +163,7 @@
                 <!-- Desktop Nav Tabs -->
                 <nav class="hidden md:flex items-center space-x-1 glass-panel px-4 py-2 rounded-full border border-white/10">
                     <button onclick="switchTab('home')" id="nav-home" class="nav-tab text-xs font-orbitron tracking-wider px-4 py-2 rounded-full transition-all text-cyanGlow bg-white/5 border border-cyanGlow/30">HOME</button>
-                    <button onclick="switchTab('vehicles')" id="nav-vehicles" class="nav-tab text-xs font-orbitron tracking-wider px-4 py-2 rounded-full text-slate-400 hover:text-white transition-all">VEHICLES</button>
+                    <button onclick="switchTab('vehicles')" id="nav-vehicles" class="nav-tab text-xs font-orbitron tracking-wider px-4 py-2 rounded-full text-slate-400 hover:text-white transition-all">PRODUCTS</button>
                     <button onclick="switchTab('tech')" id="nav-tech" class="nav-tab text-xs font-orbitron tracking-wider px-4 py-2 rounded-full text-slate-400 hover:text-white transition-all">INNOVATIONS</button>
                     <button onclick="switchTab('about')" id="nav-about" class="nav-tab text-xs font-orbitron tracking-wider px-4 py-2 rounded-full text-slate-400 hover:text-white transition-all">ABOUT US</button>
                     <button onclick="switchTab('gallery')" id="nav-gallery" class="nav-tab text-xs font-orbitron tracking-wider px-4 py-2 rounded-full text-slate-400 hover:text-white transition-all">GALLERY & FAQ</button>
@@ -184,7 +173,7 @@
                 <!-- Header Action CTA -->
                 <div class="hidden sm:flex items-center space-x-4">
                     <button onclick="openBookingModal()" class="btn-cyber px-6 py-2.5 rounded-full font-orbitron text-xs font-bold tracking-widest text-white flex items-center space-x-2">
-                        <span>TEST DRIVE</span>
+                        <span>BOOK TEST DRIVE</span>
                         <i class="fa-solid fa-chevron-right text-xs text-cyanGlow"></i>
                     </button>
                 </div>
@@ -199,7 +188,7 @@
         <!-- Mobile Drawer Navigation -->
         <div id="mobile-drawer" class="hidden md:hidden glass-panel border-b border-cyanGlow/20 px-6 py-6 space-y-4">
             <button onclick="switchTab('home'); toggleMobileMenu()" class="block w-full text-left py-2 font-orbitron text-cyanGlow">HOME</button>
-            <button onclick="switchTab('vehicles'); toggleMobileMenu()" class="block w-full text-left py-2 font-orbitron text-slate-300">PRODUCTS & CATALOG</button>
+            <button onclick="switchTab('vehicles'); toggleMobileMenu()" class="block w-full text-left py-2 font-orbitron text-slate-300">PRODUCTS & FLEET</button>
             <button onclick="switchTab('tech'); toggleMobileMenu()" class="block w-full text-left py-2 font-orbitron text-slate-300">INNOVATIONS</button>
             <button onclick="switchTab('about'); toggleMobileMenu()" class="block w-full text-left py-2 font-orbitron text-slate-300">ABOUT US</button>
             <button onclick="switchTab('gallery'); toggleMobileMenu()" class="block w-full text-left py-2 font-orbitron text-slate-300">GALLERY & FAQ</button>
@@ -215,9 +204,8 @@
         <section id="tab-home" class="tab-content min-h-screen">
             <!-- Hero Banner -->
             <div class="relative min-h-[85vh] flex items-center justify-center bg-grid overflow-hidden">
-                <!-- Ambient Glowing Orbs -->
                 <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-cyanGlow/10 rounded-full blur-[140px] pointer-events-none"></div>
-                <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-magentaNeon/15 rounded-full blur-[150px] pointer-events-none"></div>
+                <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-emeraldGlow/10 rounded-full blur-[150px] pointer-events-none"></div>
 
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 grid lg:grid-cols-12 gap-12 items-center">
                     <!-- Left Hero Info -->
@@ -228,12 +216,12 @@
                         </div>
 
                         <h1 class="font-orbitron font-black text-4xl sm:text-6xl lg:text-7xl tracking-tight leading-none text-white">
-                            HYPER <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyanGlow via-slate-100 to-magentaNeon text-glow-cyan">DRIVE.</span><br>
+                            HYPER <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyanGlow via-emeraldGlow to-white text-glow-cyan">DRIVE.</span><br>
                             ZERO EMISSIONS.
                         </h1>
 
                         <p class="text-slate-400 text-base sm:text-lg max-w-xl mx-auto lg:mx-0 font-light leading-relaxed">
-                            Experience unprecedented 1,400 HP quad-motor electric torque combined with solid-state cell architecture. Designed for those who demand ultimate speed and sustainability.
+                            Unleash 1,400 HP of instantaneous quad-motor torque backed by solid-state cell architecture. Designed for those who demand ultimate speed and zero-carbon mobility.
                         </p>
 
                         <!-- Animated Counter Stats -->
@@ -255,51 +243,33 @@
                         <!-- CTA Actions -->
                         <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
                             <button onclick="switchTab('vehicles')" class="w-full sm:w-auto btn-cyber px-8 py-4 rounded-xl font-orbitron text-xs font-bold tracking-widest text-white shadow-xl shadow-cyanGlow/10">
-                                EXPLORE CATALOG
+                                EXPLORE FLEET
                             </button>
                             <button onclick="openBookingModal()" class="w-full sm:w-auto glass-panel hover:bg-white/10 border-white/20 px-8 py-4 rounded-xl font-orbitron text-xs font-semibold text-slate-200 transition-all flex items-center justify-center space-x-2">
-                                <i class="fa-solid fa-calendar-check text-cyanGlow"></i>
-                                <span>RESERVE TEST DRIVE</span>
+                                <i class="fa-solid fa-calendar-days text-cyanGlow"></i>
+                                <span>SCHEDULE TEST DRIVE</span>
                             </button>
                         </div>
                     </div>
 
-                    <!-- Right Vehicle Interactive SVG Graphic -->
+                    <!-- Right Vehicle Image View -->
                     <div class="lg:col-span-6 relative flex justify-center items-center">
-                        <div class="relative w-full max-w-lg aspect-square flex items-center justify-center">
-                            <div class="absolute inset-0 rounded-full border border-cyanGlow/20 animate-spin-slow"></div>
-                            <div class="absolute inset-8 rounded-full border border-dashed border-magentaNeon/30"></div>
-                            
-                            <!-- EV SVG Vehicle Canvas Silhouette -->
-                            <div class="relative z-10 animate-float drop-shadow-[0_20px_50px_rgba(0,243,255,0.4)]">
-                                <svg class="w-full h-auto max-w-md" viewBox="0 0 600 300" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M50 200 L120 180 L200 120 L380 115 L480 165 L550 190 L560 215 L40 215 Z" fill="#0b0f19" stroke="#00f3ff" stroke-width="3" />
-                                    <path d="M180 125 L240 70 L370 70 L440 130 Z" fill="url(#car-glass)" stroke="#ff007f" stroke-width="2" opacity="0.8"/>
-                                    <polygon points="50,195 20,205 20,225 50,210" fill="#00f3ff" opacity="0.9"/>
-                                    <path d="M20 205 L-100 240 L-100 270 L20 225 Z" fill="url(#beam-glow)" opacity="0.4"/>
-                                    <circle cx="140" cy="210" r="38" fill="#05070b" stroke="#00f3ff" stroke-width="4"/>
-                                    <circle cx="140" cy="210" r="20" fill="#141b2d" stroke="#ff007f" stroke-width="3"/>
-                                    <circle cx="450" cy="210" r="38" fill="#05070b" stroke="#00f3ff" stroke-width="4"/>
-                                    <circle cx="450" cy="210" r="20" fill="#141b2d" stroke="#ff007f" stroke-width="3"/>
-                                    <line x1="180" y1="220" x2="410" y2="220" stroke="#00f3ff" stroke-width="6" stroke-linecap="round" class="animate-pulse-glow" />
-                                    <defs>
-                                        <linearGradient id="car-glass" x1="0%" y1="0%" x2="100%" y2="100%">
-                                            <stop offset="0%" stop-color="#00f3ff" stop-opacity="0.5"/>
-                                            <stop offset="100%" stop-color="#ff007f" stop-opacity="0.15"/>
-                                        </linearGradient>
-                                        <linearGradient id="beam-glow" x1="100%" y1="0%" x2="0%" y2="0%">
-                                            <stop offset="0%" stop-color="#00f3ff" stop-opacity="0.8"/>
-                                            <stop offset="100%" stop-color="#00f3ff" stop-opacity="0"/>
-                                        </linearGradient>
-                                    </defs>
-                                </svg>
+                        <div class="relative w-full max-w-xl rounded-3xl overflow-hidden glass-panel border-cyanGlow/30 p-2 shadow-2xl group">
+                            <img src="https://images.unsplash.com/photo-1617788138017-80ad40651399?auto=format&fit=crop&w=1200&q=80" alt="VoltEra Hero Hypercar" class="w-full h-80 sm:h-96 object-cover rounded-2xl group-hover:scale-105 transition-transform duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-void via-transparent to-transparent opacity-80"></div>
+                            <div class="absolute bottom-6 left-6 right-6 flex justify-between items-end">
+                                <div>
+                                    <span class="text-[10px] font-orbitron text-cyanGlow tracking-widest">FLAGSHIP MODEL</span>
+                                    <h3 class="font-orbitron text-xl sm:text-2xl font-bold text-white">APEX 1 HYPERCOUPE</h3>
+                                </div>
+                                <span class="px-3 py-1 bg-cyanGlow/20 border border-cyanGlow rounded-full text-xs font-orbitron text-white">800V SYSTEM</span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Key Features Showcase Grid -->
+            <!-- Core Engineering Pillars Grid -->
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
                 <div class="text-center max-w-2xl mx-auto mb-16 reveal-on-scroll">
                     <span class="font-orbitron text-xs text-cyanGlow tracking-widest uppercase">Pinnacle Engineering</span>
@@ -317,8 +287,8 @@
                     </div>
 
                     <div class="glass-card p-8 rounded-2xl reveal-on-scroll">
-                        <div class="w-14 h-14 rounded-xl bg-magentaNeon/10 border border-magentaNeon/30 flex items-center justify-center text-magentaNeon text-2xl mb-6">
-                            <i class="fa-solid fa-car-battery"></i>
+                        <div class="w-14 h-14 rounded-xl bg-emeraldGlow/10 border border-emeraldGlow/30 flex items-center justify-center text-emeraldGlow text-2xl mb-6">
+                            <i class="fa-solid fa-battery-full"></i>
                         </div>
                         <h3 class="font-orbitron font-semibold text-xl text-white mb-3">Solid-State Matrix</h3>
                         <p class="text-slate-400 text-sm leading-relaxed">Next-gen cell chemistry delivering 500+ miles range and 80% charge replenishment in under 10 minutes.</p>
@@ -329,20 +299,20 @@
                             <i class="fa-solid fa-shield-halved"></i>
                         </div>
                         <h3 class="font-orbitron font-semibold text-xl text-white mb-3">Titanium Monocoque</h3>
-                        <p class="text-slate-400 text-sm leading-relaxed">3D-printed aerospace alloy chassis achieving unmatched torsional rigidity and structural safety safety scores.</p>
+                        <p class="text-slate-400 text-sm leading-relaxed">3D-printed aerospace alloy chassis achieving unmatched torsional rigidity and structural safety scores.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ================= SECTION 2: VEHICLES & PRODUCTS CATALOG ================= -->
+        <!-- ================= SECTION 2: PRODUCTS CATALOG ================= -->
         <section id="tab-vehicles" class="tab-content hidden min-h-screen py-10">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <!-- Section Header -->
                 <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
                     <div>
-                        <span class="font-orbitron text-xs text-cyanGlow tracking-widest uppercase">Vehicles & Services</span>
-                        <h2 class="font-orbitron text-3xl sm:text-5xl font-black text-white mt-2">FLEET CATALOG</h2>
+                        <span class="font-orbitron text-xs text-cyanGlow tracking-widest uppercase">Fleet Catalog</span>
+                        <h2 class="font-orbitron text-3xl sm:text-5xl font-black text-white mt-2">ELECTRIC FLEET</h2>
                     </div>
 
                     <!-- Category Filters -->
@@ -354,46 +324,40 @@
                     </div>
                 </div>
 
-                <!-- Vehicles Grid with 3D Tilt Effect -->
+                <!-- Vehicles Grid -->
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="vehicles-grid">
-                    <!-- Vehicle Card 1 -->
-                    <div class="glass-card rounded-2xl overflow-hidden group flex flex-col justify-between vehicle-item" data-category="hyper">
-                        <div class="relative p-6 bg-gradient-to-b from-surfaceLight/50 to-transparent">
-                            <div class="flex justify-between items-start mb-4">
-                                <div>
-                                    <span class="text-[10px] font-orbitron text-cyanGlow tracking-wider">FLAGSHIP HYPERCAR</span>
-                                    <h3 class="font-orbitron text-2xl font-bold text-white">VoltEra APEX 1</h3>
-                                </div>
-                                <span class="px-3 py-1 bg-cyanGlow/10 border border-cyanGlow/30 rounded-full text-xs font-orbitron text-cyanGlow">$165,000</span>
-                            </div>
-
-                            <div class="py-8 flex justify-center items-center group-hover:scale-105 transition-transform duration-500">
-                                <div class="w-full h-44 bg-surfaceLight/60 rounded-xl flex items-center justify-center relative overflow-hidden border border-cyanGlow/20">
-                                    <i class="fa-solid fa-car-side text-7xl text-cyanGlow/90 drop-shadow-[0_0_25px_rgba(0,243,255,0.6)]"></i>
-                                    <div class="absolute bottom-3 left-3 text-[9px] font-orbitron text-slate-400">TRIPLE MOTOR AWD</div>
-                                </div>
-                            </div>
+                    <!-- Vehicle Card 1: APEX 1 -->
+                    <div class="glass-card rounded-3xl overflow-hidden group flex flex-col justify-between vehicle-item" data-category="hyper">
+                        <div class="relative h-60 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1617788138017-80ad40651399?auto=format&fit=crop&w=800&q=80" alt="VoltEra APEX 1" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent"></div>
+                            <span class="absolute top-4 right-4 px-3 py-1 bg-cyanGlow/20 backdrop-blur-md border border-cyanGlow/40 rounded-full text-xs font-orbitron text-cyanGlow">$165,000</span>
                         </div>
 
-                        <div class="p-6 bg-surface/90 border-t border-white/5 space-y-4">
-                            <div class="grid grid-cols-3 gap-2 text-center py-2 bg-void/60 rounded-xl border border-white/5">
+                        <div class="p-6 space-y-4">
+                            <div>
+                                <span class="text-[10px] font-orbitron text-cyanGlow tracking-wider uppercase">Flagship Hypercoupe</span>
+                                <h3 class="font-orbitron text-2xl font-bold text-white">VoltEra APEX 1</h3>
+                            </div>
+
+                            <div class="grid grid-cols-3 gap-2 text-center py-2.5 bg-void/60 rounded-xl border border-white/5 text-xs font-orbitron">
                                 <div>
-                                    <p class="text-[10px] text-slate-400">0-60 mph</p>
-                                    <p class="font-orbitron font-bold text-white text-sm">1.85s</p>
+                                    <p class="text-[9px] text-slate-400">0-60 MPH</p>
+                                    <p class="font-bold text-white">1.85s</p>
                                 </div>
                                 <div>
-                                    <p class="text-[10px] text-slate-400">Top Speed</p>
-                                    <p class="font-orbitron font-bold text-white text-sm">220 mph</p>
+                                    <p class="text-[9px] text-slate-400">TOP SPEED</p>
+                                    <p class="font-bold text-white">220 mph</p>
                                 </div>
                                 <div>
-                                    <p class="text-[10px] text-slate-400">Range</p>
-                                    <p class="font-orbitron font-bold text-cyanGlow text-sm">520 mi</p>
+                                    <p class="text-[9px] text-slate-400">RANGE</p>
+                                    <p class="font-bold text-cyanGlow">520 mi</p>
                                 </div>
                             </div>
 
-                            <div class="flex gap-3">
-                                <button onclick="openSpecsModal('APEX 1', '1,400 HP', '520 Miles', '1.85s', '800V Ultra-Charge', '$165,000')" class="w-1/2 py-3 glass-panel hover:bg-white/10 rounded-xl text-[10px] font-orbitron text-white text-center">
-                                    SPECS & COLOR
+                            <div class="flex gap-3 pt-2">
+                                <button onclick="openSpecsModal('VoltEra APEX 1', '1,400 HP Quad-Motor', '520 Miles', '1.85s', '220 mph', '800V Ultra-Charge (9 Min)', '$165,000', 'https://images.unsplash.com/photo-1617788138017-80ad40651399?auto=format&fit=crop&w=800&q=80')" class="w-1/2 py-3 glass-panel hover:bg-white/10 rounded-xl text-[10px] font-orbitron text-white text-center">
+                                    VIEW SPECS
                                 </button>
                                 <button onclick="openBookingModal('VoltEra APEX 1')" class="w-1/2 btn-cyber py-3 rounded-xl text-[10px] font-orbitron font-bold text-white text-center">
                                     RESERVE
@@ -402,44 +366,38 @@
                         </div>
                     </div>
 
-                    <!-- Vehicle Card 2 -->
-                    <div class="glass-card rounded-2xl overflow-hidden group flex flex-col justify-between vehicle-item" data-category="sedan">
-                        <div class="relative p-6 bg-gradient-to-b from-surfaceLight/50 to-transparent">
-                            <div class="flex justify-between items-start mb-4">
-                                <div>
-                                    <span class="text-[10px] font-orbitron text-magentaNeon tracking-wider">LUXURY SEDAN</span>
-                                    <h3 class="font-orbitron text-2xl font-bold text-white">VoltEra LUMIN S</h3>
-                                </div>
-                                <span class="px-3 py-1 bg-magentaNeon/10 border border-magentaNeon/30 rounded-full text-xs font-orbitron text-magentaNeon">$89,000</span>
-                            </div>
-
-                            <div class="py-8 flex justify-center items-center group-hover:scale-105 transition-transform duration-500">
-                                <div class="w-full h-44 bg-surfaceLight/60 rounded-xl flex items-center justify-center relative overflow-hidden border border-magentaNeon/20">
-                                    <i class="fa-solid fa-car text-7xl text-magentaNeon/90 drop-shadow-[0_0_25px_rgba(255,0,127,0.6)]"></i>
-                                    <div class="absolute bottom-3 left-3 text-[9px] font-orbitron text-slate-400">EXECUTIVE LOUNGE</div>
-                                </div>
-                            </div>
+                    <!-- Vehicle Card 2: LUMIN S -->
+                    <div class="glass-card rounded-3xl overflow-hidden group flex flex-col justify-between vehicle-item" data-category="sedan">
+                        <div class="relative h-60 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=800&q=80" alt="VoltEra LUMIN S" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent"></div>
+                            <span class="absolute top-4 right-4 px-3 py-1 bg-emeraldGlow/20 backdrop-blur-md border border-emeraldGlow/40 rounded-full text-xs font-orbitron text-emeraldGlow">$89,000</span>
                         </div>
 
-                        <div class="p-6 bg-surface/90 border-t border-white/5 space-y-4">
-                            <div class="grid grid-cols-3 gap-2 text-center py-2 bg-void/60 rounded-xl border border-white/5">
+                        <div class="p-6 space-y-4">
+                            <div>
+                                <span class="text-[10px] font-orbitron text-emeraldGlow tracking-wider uppercase">Executive Sedan</span>
+                                <h3 class="font-orbitron text-2xl font-bold text-white">VoltEra LUMIN S</h3>
+                            </div>
+
+                            <div class="grid grid-cols-3 gap-2 text-center py-2.5 bg-void/60 rounded-xl border border-white/5 text-xs font-orbitron">
                                 <div>
-                                    <p class="text-[10px] text-slate-400">0-60 mph</p>
-                                    <p class="font-orbitron font-bold text-white text-sm">2.9s</p>
+                                    <p class="text-[9px] text-slate-400">0-60 MPH</p>
+                                    <p class="font-bold text-white">2.9s</p>
                                 </div>
                                 <div>
-                                    <p class="text-[10px] text-slate-400">Top Speed</p>
-                                    <p class="font-orbitron font-bold text-white text-sm">175 mph</p>
+                                    <p class="text-[9px] text-slate-400">TOP SPEED</p>
+                                    <p class="font-bold text-white">175 mph</p>
                                 </div>
                                 <div>
-                                    <p class="text-[10px] text-slate-400">Range</p>
-                                    <p class="font-orbitron font-bold text-magentaNeon text-sm">480 mi</p>
+                                    <p class="text-[9px] text-slate-400">RANGE</p>
+                                    <p class="font-bold text-emeraldGlow">480 mi</p>
                                 </div>
                             </div>
 
-                            <div class="flex gap-3">
-                                <button onclick="openSpecsModal('LUMIN S', '850 HP', '480 Miles', '2.9s', 'Acoustic Glass Interior', '$89,000')" class="w-1/2 py-3 glass-panel hover:bg-white/10 rounded-xl text-[10px] font-orbitron text-white text-center">
-                                    SPECS & COLOR
+                            <div class="flex gap-3 pt-2">
+                                <button onclick="openSpecsModal('VoltEra LUMIN S', '850 HP Dual-Motor', '480 Miles', '2.9s', '175 mph', 'Acoustic Active Noise Control', '$89,000', 'https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=800&q=80')" class="w-1/2 py-3 glass-panel hover:bg-white/10 rounded-xl text-[10px] font-orbitron text-white text-center">
+                                    VIEW SPECS
                                 </button>
                                 <button onclick="openBookingModal('VoltEra LUMIN S')" class="w-1/2 btn-cyber py-3 rounded-xl text-[10px] font-orbitron font-bold text-white text-center">
                                     RESERVE
@@ -448,44 +406,38 @@
                         </div>
                     </div>
 
-                    <!-- Vehicle Card 3 -->
-                    <div class="glass-card rounded-2xl overflow-hidden group flex flex-col justify-between vehicle-item" data-category="suv">
-                        <div class="relative p-6 bg-gradient-to-b from-surfaceLight/50 to-transparent">
-                            <div class="flex justify-between items-start mb-4">
-                                <div>
-                                    <span class="text-[10px] font-orbitron text-cyanGlow tracking-wider">CYBER SUV</span>
-                                    <h3 class="font-orbitron text-2xl font-bold text-white">VoltEra TERRA X</h3>
-                                </div>
-                                <span class="px-3 py-1 bg-cyanGlow/10 border border-cyanGlow/30 rounded-full text-xs font-orbitron text-cyanGlow">$115,000</span>
-                            </div>
-
-                            <div class="py-8 flex justify-center items-center group-hover:scale-105 transition-transform duration-500">
-                                <div class="w-full h-44 bg-surfaceLight/60 rounded-xl flex items-center justify-center relative overflow-hidden border border-cyanGlow/20">
-                                    <i class="fa-solid fa-truck-monster text-7xl text-cyanGlow/90 drop-shadow-[0_0_25px_rgba(0,243,255,0.6)]"></i>
-                                    <div class="absolute bottom-3 left-3 text-[9px] font-orbitron text-slate-400">QUAD-MOTOR OFFROAD</div>
-                                </div>
-                            </div>
+                    <!-- Vehicle Card 3: TERRA X -->
+                    <div class="glass-card rounded-3xl overflow-hidden group flex flex-col justify-between vehicle-item" data-category="suv">
+                        <div class="relative h-60 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=800&q=80" alt="VoltEra TERRA X" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent"></div>
+                            <span class="absolute top-4 right-4 px-3 py-1 bg-cyanGlow/20 backdrop-blur-md border border-cyanGlow/40 rounded-full text-xs font-orbitron text-cyanGlow">$115,000</span>
                         </div>
 
-                        <div class="p-6 bg-surface/90 border-t border-white/5 space-y-4">
-                            <div class="grid grid-cols-3 gap-2 text-center py-2 bg-void/60 rounded-xl border border-white/5">
+                        <div class="p-6 space-y-4">
+                            <div>
+                                <span class="text-[10px] font-orbitron text-cyanGlow tracking-wider uppercase">Cyber All-Terrain SUV</span>
+                                <h3 class="font-orbitron text-2xl font-bold text-white">VoltEra TERRA X</h3>
+                            </div>
+
+                            <div class="grid grid-cols-3 gap-2 text-center py-2.5 bg-void/60 rounded-xl border border-white/5 text-xs font-orbitron">
                                 <div>
-                                    <p class="text-[10px] text-slate-400">0-60 mph</p>
-                                    <p class="font-orbitron font-bold text-white text-sm">3.1s</p>
+                                    <p class="text-[9px] text-slate-400">0-60 MPH</p>
+                                    <p class="font-bold text-white">3.1s</p>
                                 </div>
                                 <div>
-                                    <p class="text-[10px] text-slate-400">Towing</p>
-                                    <p class="font-orbitron font-bold text-white text-sm">14,000 lbs</p>
+                                    <p class="text-[9px] text-slate-400">TOWING</p>
+                                    <p class="font-bold text-white">14,000 lbs</p>
                                 </div>
                                 <div>
-                                    <p class="text-[10px] text-slate-400">Range</p>
-                                    <p class="font-orbitron font-bold text-cyanGlow text-sm">450 mi</p>
+                                    <p class="text-[9px] text-slate-400">RANGE</p>
+                                    <p class="font-bold text-cyanGlow">450 mi</p>
                                 </div>
                             </div>
 
-                            <div class="flex gap-3">
-                                <button onclick="openSpecsModal('TERRA X', '1,100 HP', '450 Miles', '3.1s', 'Adaptive Air Suspension', '$115,000')" class="w-1/2 py-3 glass-panel hover:bg-white/10 rounded-xl text-[10px] font-orbitron text-white text-center">
-                                    SPECS & COLOR
+                            <div class="flex gap-3 pt-2">
+                                <button onclick="openSpecsModal('VoltEra TERRA X', '1,100 HP Quad Torque Vectoring', '450 Miles', '3.1s', '155 mph', 'Adaptive Pneumatic Air Lift', '$115,000', 'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=800&q=80')" class="w-1/2 py-3 glass-panel hover:bg-white/10 rounded-xl text-[10px] font-orbitron text-white text-center">
+                                    VIEW SPECS
                                 </button>
                                 <button onclick="openBookingModal('VoltEra TERRA X')" class="w-1/2 btn-cyber py-3 rounded-xl text-[10px] font-orbitron font-bold text-white text-center">
                                     RESERVE
@@ -507,40 +459,40 @@
                 </div>
 
                 <div class="grid lg:grid-cols-2 gap-8 mb-16">
-                    <div class="glass-panel p-8 rounded-2xl border-cyanGlow/30 relative overflow-hidden">
-                        <div class="flex items-center space-x-4 mb-6">
-                            <div class="w-12 h-12 rounded-xl bg-cyanGlow/20 flex items-center justify-center text-cyanGlow text-2xl">
-                                <i class="fa-solid fa-atom"></i>
+                    <div class="glass-panel p-8 rounded-3xl border-cyanGlow/30 relative overflow-hidden flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center space-x-4 mb-6">
+                                <div class="w-12 h-12 rounded-xl bg-cyanGlow/20 flex items-center justify-center text-cyanGlow text-2xl">
+                                    <i class="fa-solid fa-atom"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-orbitron text-xl font-bold text-white">QuantumCell™ Solid-State Matrix</h3>
+                                    <p class="text-xs text-slate-400">Zero-Liquid Electrolyte Cell Architecture</p>
+                                </div>
                             </div>
-                            <div>
-                                <h3 class="font-orbitron text-xl font-bold text-white">QuantumCell™ Battery</h3>
-                                <p class="text-xs text-slate-400">Solid-State Electrolyte System</p>
-                            </div>
+                            <p class="text-slate-300 text-sm leading-relaxed mb-6">
+                                Eliminating volatile liquid electrolytes allows 2x structural power density. Enables 80% charge replenishment in under 9 minutes with zero degradation across 300,000 miles.
+                            </p>
                         </div>
-                        <p class="text-slate-300 text-sm leading-relaxed mb-6">
-                            Eliminating liquid electrolytes allows for 2x power density compared to standard lithium-ion batteries. Charges from 10% to 80% in just 9 minutes using ultra-fast DC superchargers.
-                        </p>
-                        <div class="w-full bg-void/60 h-3 rounded-full overflow-hidden p-0.5 border border-cyanGlow/20">
-                            <div class="bg-gradient-to-r from-cyanGlow to-magentaNeon h-full rounded-full w-[88%] animate-pulse"></div>
-                        </div>
+                        <img src="https://images.unsplash.com/photo-1558441719-6705546fe493?auto=format&fit=crop&w=800&q=80" alt="EV Battery Tech" class="w-full h-48 object-cover rounded-2xl border border-white/10">
                     </div>
 
-                    <div class="glass-panel p-8 rounded-2xl border-magentaNeon/30 relative overflow-hidden">
-                        <div class="flex items-center space-x-4 mb-6">
-                            <div class="w-12 h-12 rounded-xl bg-magentaNeon/20 flex items-center justify-center text-magentaNeon text-2xl">
-                                <i class="fa-solid fa-brain"></i>
+                    <div class="glass-panel p-8 rounded-3xl border-emeraldGlow/30 relative overflow-hidden flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center space-x-4 mb-6">
+                                <div class="w-12 h-12 rounded-xl bg-emeraldGlow/20 flex items-center justify-center text-emeraldGlow text-2xl">
+                                    <i class="fa-solid fa-brain"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-orbitron text-xl font-bold text-white">Synapse Neural Autopilot</h3>
+                                    <p class="text-xs text-slate-400">100 Trillion Operations/Sec Neural Net</p>
+                                </div>
                             </div>
-                            <div>
-                                <h3 class="font-orbitron text-xl font-bold text-white">Synapse Autonomous AI</h3>
-                                <p class="text-xs text-slate-400">Self-Learning Driving Neural Net</p>
-                            </div>
+                            <p class="text-slate-300 text-sm leading-relaxed mb-6">
+                                Equipped with 12 solid-state LiDAR sensors, 8 4K cameras, and dual redundant chips for zero-latency obstacle recognition in fog, heavy rain, or snow.
+                            </p>
                         </div>
-                        <p class="text-slate-300 text-sm leading-relaxed mb-6">
-                            Equipped with 12 solid-state LiDAR sensors, 8 HD optical cameras, and dual redundant neural compute chips for zero-latency obstacle recognition in extreme weather.
-                        </p>
-                        <div class="w-full bg-void/60 h-3 rounded-full overflow-hidden p-0.5 border border-magentaNeon/20">
-                            <div class="bg-gradient-to-r from-magentaNeon to-cyanGlow h-full rounded-full w-[95%] animate-pulse"></div>
-                        </div>
+                        <img src="https://images.unsplash.com/photo-1508974239320-0a029497e820?auto=format&fit=crop&w=800&q=80" alt="Autonomous AI Dashboard" class="w-full h-48 object-cover rounded-2xl border border-white/10">
                     </div>
                 </div>
             </div>
@@ -554,38 +506,29 @@
                         <span class="font-orbitron text-xs text-cyanGlow tracking-widest uppercase">Our Mission & Background</span>
                         <h2 class="font-orbitron text-3xl sm:text-5xl font-black text-white leading-tight">DRIVING THE FUTURE OF SUSTAINABILITY</h2>
                         <p class="text-slate-300 leading-relaxed font-light text-sm">
-                            Founded in 2024, VoltEra Motors was established with a single objective: to engineer electric vehicles that surpass internal combustion cars in speed, safety, intelligence, and elegance.
+                            VoltEra Motors was established with a singular vision: to build high-performance electric vehicles that outperform traditional internal combustion cars in speed, safety, and longevity.
                         </p>
                         <p class="text-slate-400 leading-relaxed font-light text-sm">
-                            Every vehicle that exits our mega-factories is constructed with 100% recycled titanium chassis components and manufactured using carbon-neutral solar microgrids.
+                            Every vehicle produced in our mega-factories uses 100% recycled aerospace titanium components and zero fossil-fuel energy during manufacturing.
                         </p>
                         <div class="pt-4 border-t border-white/10 grid grid-cols-2 gap-6">
                             <div>
-                                <h4 class="font-orbitron text-2xl font-bold text-cyanGlow">100%</h4>
-                                <p class="text-[10px] text-slate-400 uppercase tracking-wider">Carbon-Neutral Process</p>
+                                <h4 class="font-orbitron text-3xl font-bold text-cyanGlow">100%</h4>
+                                <p class="text-[10px] text-slate-400 uppercase tracking-wider mt-1">Carbon-Neutral Process</p>
                             </div>
                             <div>
-                                <h4 class="font-orbitron text-2xl font-bold text-magentaNeon">50+</h4>
-                                <p class="text-[10px] text-slate-400 uppercase tracking-wider">Global EV Patents</p>
+                                <h4 class="font-orbitron text-3xl font-bold text-emeraldGlow">60+</h4>
+                                <p class="text-[10px] text-slate-400 uppercase tracking-wider mt-1">Global EV Patents</p>
                             </div>
                         </div>
                     </div>
 
-                    <div class="glass-panel p-8 rounded-3xl border-white/10 relative">
-                        <h3 class="font-orbitron text-xl font-bold text-white mb-6">GLOBAL HEADQUARTERS</h3>
-                        <div class="space-y-4 text-slate-300 text-sm">
-                            <div class="flex items-start space-x-3">
-                                <i class="fa-solid fa-location-dot text-cyanGlow mt-1"></i>
-                                <span>VoltEra Innovation Campus, Silicon Valley & Megafactory Frankfurt</span>
-                            </div>
-                            <div class="flex items-start space-x-3">
-                                <i class="fa-solid fa-envelope text-cyanGlow mt-1"></i>
-                                <span>contact@volteramotors.com</span>
-                            </div>
-                            <div class="flex items-start space-x-3">
-                                <i class="fa-solid fa-phone text-cyanGlow mt-1"></i>
-                                <span>+1 (800) 555-VOLT</span>
-                            </div>
+                    <div class="glass-panel p-8 rounded-3xl border-white/10 space-y-6">
+                        <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80" alt="VoltEra Megafactory" class="w-full h-60 object-cover rounded-2xl">
+                        <h3 class="font-orbitron text-xl font-bold text-white">GLOBAL HEADQUARTERS</h3>
+                        <div class="space-y-3 text-slate-300 text-sm">
+                            <p class="flex items-center space-x-3"><i class="fa-solid fa-location-dot text-cyanGlow"></i><span>VoltEra Innovation Park, Silicon Valley, CA 94025</span></p>
+                            <p class="flex items-center space-x-3"><i class="fa-solid fa-industry text-cyanGlow"></i><span>Megafactory Berlin & Frankfurt Innovation Hub</span></p>
                         </div>
                     </div>
                 </div>
@@ -596,7 +539,7 @@
         <section id="tab-gallery" class="tab-content hidden min-h-screen py-10">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center max-w-2xl mx-auto mb-12">
-                    <span class="font-orbitron text-xs text-cyanGlow tracking-widest uppercase">Visuals & Testimonials</span>
+                    <span class="font-orbitron text-xs text-cyanGlow tracking-widest uppercase">Visuals & Reviews</span>
                     <h2 class="font-orbitron text-3xl sm:text-4xl font-bold text-white mt-2">MEDIA GALLERY & REVIEWS</h2>
                 </div>
 
@@ -606,40 +549,50 @@
                         <div class="flex items-center space-x-1 text-cyanGlow mb-4 text-xs">
                             <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
                         </div>
-                        <p class="text-slate-300 text-sm italic mb-4">"The instant torque of the VoltEra APEX 1 is completely unparalleled. It redefines what driving a hypercar feels like."</p>
-                        <p class="font-orbitron text-xs text-white font-bold">- Alex Vance, Motorsport Journalist</p>
+                        <p class="text-slate-300 text-sm italic mb-4">"The instant acceleration of the APEX 1 hypercar is unmatched. It feels decades ahead of traditional luxury sportscars."</p>
+                        <p class="font-orbitron text-xs text-white font-bold">- Alex Vance, Automotive Journalist</p>
                     </div>
 
                     <div class="glass-card p-6 rounded-2xl">
-                        <div class="flex items-center space-x-1 text-magentaNeon mb-4 text-xs">
+                        <div class="flex items-center space-x-1 text-emeraldGlow mb-4 text-xs">
                             <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
                         </div>
-                        <p class="text-slate-300 text-sm italic mb-4">"The LUMIN S has changed my daily commute. The autonomous autopilot is smooth, precise, and incredibly reliable."</p>
-                        <p class="font-orbitron text-xs text-white font-bold">- Dr. Elena Rostova, Tech Executive</p>
+                        <p class="text-slate-300 text-sm italic mb-4">"The LUMIN S has elevated my daily commute. The autonomous autopilot system handles heavy highway traffic effortlessly."</p>
+                        <p class="font-orbitron text-xs text-white font-bold">- Dr. Elena Rostova, AI Researcher</p>
                     </div>
                 </div>
 
-                <!-- FAQ Accordion -->
+                <!-- Interactive FAQ Accordion -->
                 <div class="max-w-3xl mx-auto space-y-4">
-                    <h3 class="font-orbitron text-xl font-bold text-white mb-4 text-center">FREQUENTLY ASKED QUESTIONS</h3>
+                    <h3 class="font-orbitron text-xl font-bold text-white mb-6 text-center">FREQUENTLY ASKED QUESTIONS</h3>
                     
                     <div class="glass-panel rounded-xl p-4 border-white/10">
                         <button onclick="toggleFaq('faq1')" class="w-full flex justify-between items-center text-left font-orbitron text-sm text-cyanGlow font-semibold">
                             <span>How fast is VoltEra Supercharging?</span>
-                            <i class="fa-solid fa-chevron-down"></i>
+                            <i class="fa-solid fa-chevron-down text-xs"></i>
                         </button>
-                        <p id="faq1" class="hidden text-slate-400 text-xs mt-3 leading-relaxed">
-                            Our 800V Ultra-Charge network provides up to 300 miles of range in just 9 minutes at any VoltEra Supercharge hub.
+                        <p id="faq1" class="hidden text-slate-400 text-xs mt-3 leading-relaxed border-t border-white/10 pt-3">
+                            Our 800V Ultra-Charge system replenishes 80% battery capacity in just 9 minutes at any official VoltEra Supercharge station.
                         </p>
                     </div>
 
                     <div class="glass-panel rounded-xl p-4 border-white/10">
                         <button onclick="toggleFaq('faq2')" class="w-full flex justify-between items-center text-left font-orbitron text-sm text-cyanGlow font-semibold">
                             <span>What warranty covers the solid-state battery?</span>
-                            <i class="fa-solid fa-chevron-down"></i>
+                            <i class="fa-solid fa-chevron-down text-xs"></i>
                         </button>
-                        <p id="faq2" class="hidden text-slate-400 text-xs mt-3 leading-relaxed">
-                            All VoltEra vehicles come with an 8-year / 150,000-mile bumper-to-bumper warranty including full battery degradation protection.
+                        <p id="faq2" class="hidden text-slate-400 text-xs mt-3 leading-relaxed border-t border-white/10 pt-3">
+                            All VoltEra vehicles come standard with an 8-year / 150,000-mile comprehensive warranty, including 100% capacity degradation replacement.
+                        </p>
+                    </div>
+
+                    <div class="glass-panel rounded-xl p-4 border-white/10">
+                        <button onclick="toggleFaq('faq3')" class="w-full flex justify-between items-center text-left font-orbitron text-sm text-cyanGlow font-semibold">
+                            <span>Is home charger installation included?</span>
+                            <i class="fa-solid fa-chevron-down text-xs"></i>
+                        </button>
+                        <p id="faq3" class="hidden text-slate-400 text-xs mt-3 leading-relaxed border-t border-white/10 pt-3">
+                            Yes, every vehicle reservation includes a complimentary VoltEra Wall Connector and professional installation setup.
                         </p>
                     </div>
                 </div>
@@ -652,7 +605,7 @@
                 <div class="text-center max-w-2xl mx-auto mb-12">
                     <span class="font-orbitron text-xs text-cyanGlow tracking-widest uppercase">Get in Touch</span>
                     <h2 class="font-orbitron text-3xl sm:text-4xl font-bold text-white mt-2">CONTACT VOLTERA MOTORS</h2>
-                    <p class="text-slate-400 text-sm mt-2">Our specialists are available 24/7 to answer your inquiries.</p>
+                    <p class="text-slate-400 text-sm mt-2">Our specialists are available 24/7 to assist with orders and inquiries.</p>
                 </div>
 
                 <div class="grid lg:grid-cols-12 gap-8 items-start">
@@ -671,11 +624,11 @@
 
                             <div>
                                 <label class="block text-xs font-orbitron text-slate-300 mb-1">MESSAGE</label>
-                                <textarea rows="4" required placeholder="Inquire about fleet ordering, test drives, or press..." class="w-full bg-void border border-white/15 rounded-xl px-4 py-3 text-sm text-white focus:border-cyanGlow outline-none transition-colors"></textarea>
+                                <textarea rows="4" required placeholder="Inquire about custom orders, fleet purchasing, or media..." class="w-full bg-void border border-white/15 rounded-xl px-4 py-3 text-sm text-white focus:border-cyanGlow outline-none transition-colors"></textarea>
                             </div>
 
                             <button type="submit" class="w-full btn-cyber py-4 rounded-xl font-orbitron font-bold text-xs text-white tracking-widest">
-                                SEND MESSAGE
+                                TRANSMIT MESSAGE
                             </button>
                         </form>
 
@@ -684,23 +637,23 @@
                                 <i class="fa-solid fa-paper-plane"></i>
                             </div>
                             <h4 class="font-orbitron text-lg font-bold text-white">MESSAGE TRANSMITTED</h4>
-                            <p class="text-xs text-slate-400">Thank you for reaching out. A VoltEra representative will respond within 24 hours.</p>
+                            <p class="text-xs text-slate-400">Thank you for reaching out. A VoltEra specialist will respond within 24 hours.</p>
                         </div>
                     </div>
 
-                    <!-- Contact Details Card -->
+                    <!-- Contact Details -->
                     <div class="lg:col-span-5 space-y-6">
                         <div class="glass-card p-6 rounded-2xl border-white/10">
                             <h4 class="font-orbitron text-sm font-bold text-white mb-4">DIRECT CHANNELS</h4>
                             <div class="space-y-3 text-xs text-slate-300">
-                                <p><i class="fa-solid fa-phone text-cyanGlow mr-2"></i> Sales: +1 (800) 555-VOLT</p>
-                                <p><i class="fa-solid fa-headset text-cyanGlow mr-2"></i> Support: +1 (800) 555-HELP</p>
-                                <p><i class="fa-solid fa-envelope text-cyanGlow mr-2"></i> Email: press@volteramotors.com</p>
+                                <p><i class="fa-solid fa-phone text-cyanGlow mr-2"></i> Phone: +1 (800) VOLTERA</p>
+                                <p><i class="fa-solid fa-envelope text-cyanGlow mr-2"></i> Email: contact@volteramotors.com</p>
+                                <p><i class="fa-solid fa-clock text-cyanGlow mr-2"></i> Hours: 24/7 Global Concierge</p>
                             </div>
                         </div>
 
                         <div class="glass-card p-6 rounded-2xl border-white/10">
-                            <h4 class="font-orbitron text-sm font-bold text-white mb-4">HEADQUARTERS LOCATION</h4>
+                            <h4 class="font-orbitron text-sm font-bold text-white mb-4">HEADQUARTERS ADDRESS</h4>
                             <p class="text-xs text-slate-400 leading-relaxed">
                                 VoltEra Technology Park, 100 Cyberpunk Way, Silicon Valley, CA 94025
                             </p>
@@ -719,7 +672,7 @@
                 <i class="fa-solid fa-bolt text-cyanGlow text-lg"></i>
                 <span class="font-orbitron font-bold text-white text-sm">VOLTERA MOTORS &copy; 2026</span>
             </div>
-            <p class="text-xs text-slate-500">Cyberpunk Futuristic Mobility Platform. All rights reserved.</p>
+            <p class="text-xs text-slate-500">Next-Gen Electric Mobility Platform. All rights reserved.</p>
             <div class="flex space-x-5 text-slate-400 text-base">
                 <a href="#" class="hover:text-cyanGlow transition-colors"><i class="fa-brands fa-twitter"></i></a>
                 <a href="#" class="hover:text-cyanGlow transition-colors"><i class="fa-brands fa-instagram"></i></a>
@@ -729,22 +682,22 @@
         </div>
     </footer>
 
-    <!-- MODAL 1: TEST DRIVE & BOOKING -->
-    <div id="booking-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-void/80 backdrop-blur-md">
-        <div class="glass-panel w-full max-w-lg p-8 rounded-3xl border-cyanGlow/40 relative shadow-2xl">
+    <!-- MODAL 1: TEST DRIVE WITH INTERACTIVE CALENDAR & TIME SLOTS -->
+    <div id="booking-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-void/85 backdrop-blur-md">
+        <div class="glass-panel w-full max-w-xl p-8 rounded-3xl border-cyanGlow/40 relative shadow-2xl max-h-[90vh] overflow-y-auto">
             <button onclick="closeBookingModal()" class="absolute top-6 right-6 text-slate-400 hover:text-white text-xl">
                 <i class="fa-solid fa-xmark"></i>
             </button>
 
-            <h3 class="font-orbitron text-2xl font-bold text-white mb-1">RESERVE TEST DRIVE</h3>
-            <p class="text-xs text-slate-400 mb-6">Select your model and preferred experience date.</p>
+            <h3 class="font-orbitron text-2xl font-bold text-white mb-1">SCHEDULE TEST DRIVE</h3>
+            <p class="text-xs text-slate-400 mb-6">Select your model, test drive date, and preferred time slot.</p>
 
-            <form id="booking-form" onsubmit="handleBookingSubmit(event)" class="space-y-4">
+            <form id="booking-form" onsubmit="handleBookingSubmit(event)" class="space-y-5">
                 <div>
-                    <label class="block text-xs font-orbitron text-slate-300 mb-1">SELECTED MODEL</label>
+                    <label class="block text-xs font-orbitron text-slate-300 mb-1.5">VEHICLE MODEL</label>
                     <select id="modal-model-select" class="w-full bg-void border border-white/20 rounded-xl px-4 py-3 text-sm text-white focus:border-cyanGlow outline-none">
-                        <option value="VoltEra APEX 1">VoltEra APEX 1 (Hypercar)</option>
-                        <option value="VoltEra LUMIN S">VoltEra LUMIN S (Luxury Sedan)</option>
+                        <option value="VoltEra APEX 1">VoltEra APEX 1 (Hypercoupe)</option>
+                        <option value="VoltEra LUMIN S">VoltEra LUMIN S (Executive Sedan)</option>
                         <option value="VoltEra TERRA X">VoltEra TERRA X (Cyber SUV)</option>
                     </select>
                 </div>
@@ -752,20 +705,43 @@
                 <div class="grid grid-cols-2 gap-4">
                     <div>
                         <label class="block text-xs font-orbitron text-slate-300 mb-1">FULL NAME</label>
-                        <input type="text" required placeholder="Renz Mark Dalisay" class="w-full bg-void border border-white/20 rounded-xl px-4 py-3 text-sm text-white focus:border-cyanGlow outline-none">
+                        <input type="text" required placeholder="John Doe" class="w-full bg-void border border-white/20 rounded-xl px-4 py-3 text-sm text-white focus:border-cyanGlow outline-none">
                     </div>
                     <div>
                         <label class="block text-xs font-orbitron text-slate-300 mb-1">EMAIL ADDRESS</label>
-                        <input type="email" required placeholder="renz@example.com" class="w-full bg-void border border-white/20 rounded-xl px-4 py-3 text-sm text-white focus:border-cyanGlow outline-none">
+                        <input type="email" required placeholder="john@example.com" class="w-full bg-void border border-white/20 rounded-xl px-4 py-3 text-sm text-white focus:border-cyanGlow outline-none">
                     </div>
                 </div>
 
+                <!-- INTERACTIVE CALENDAR DATE PICKER -->
                 <div>
-                    <label class="block text-xs font-orbitron text-slate-300 mb-1">PREFERRED DATE</label>
-                    <input type="date" required class="w-full bg-void border border-white/20 rounded-xl px-4 py-3 text-sm text-white focus:border-cyanGlow outline-none">
+                    <label class="block text-xs font-orbitron text-slate-300 mb-2">SELECT DATE</label>
+                    <div class="glass-card p-4 rounded-2xl border-white/10 space-y-3">
+                        <div class="flex justify-between items-center text-xs font-orbitron text-white">
+                            <button type="button" onclick="changeMonth(-1)" class="hover:text-cyanGlow"><i class="fa-solid fa-chevron-left"></i></button>
+                            <span id="calendar-month-year" class="font-bold">NOVEMBER 2026</span>
+                            <button type="button" onclick="changeMonth(1)" class="hover:text-cyanGlow"><i class="fa-solid fa-chevron-right"></i></button>
+                        </div>
+                        <div class="grid grid-cols-7 gap-1 text-center text-[10px] font-orbitron text-slate-500 font-bold">
+                            <span>SU</span><span>MO</span><span>TU</span><span>WE</span><span>TH</span><span>FR</span><span>SA</span>
+                        </div>
+                        <div id="calendar-days-grid" class="grid grid-cols-7 gap-1 text-center text-xs font-orbitron">
+                            <!-- Dynamic Days -->
+                        </div>
+                    </div>
                 </div>
 
-                <button type="submit" class="w-full btn-cyber py-4 rounded-xl font-orbitron font-bold text-xs text-white tracking-widest mt-4">
+                <!-- TIME SLOTS -->
+                <div>
+                    <label class="block text-xs font-orbitron text-slate-300 mb-2">TIME SLOT</label>
+                    <div class="grid grid-cols-3 gap-3">
+                        <button type="button" onclick="selectTimeSlot('09:00 AM', this)" class="time-slot-btn py-2.5 rounded-xl border border-white/15 text-xs font-orbitron text-slate-300 hover:border-cyanGlow transition-colors">09:00 AM</button>
+                        <button type="button" onclick="selectTimeSlot('01:00 PM', this)" class="time-slot-btn py-2.5 rounded-xl border border-white/15 text-xs font-orbitron text-slate-300 hover:border-cyanGlow transition-colors">01:00 PM</button>
+                        <button type="button" onclick="selectTimeSlot('04:00 PM', this)" class="time-slot-btn py-2.5 rounded-xl border border-white/15 text-xs font-orbitron text-slate-300 hover:border-cyanGlow transition-colors">04:00 PM</button>
+                    </div>
+                </div>
+
+                <button type="submit" class="w-full btn-cyber py-4 rounded-xl font-orbitron font-bold text-xs text-white tracking-widest mt-2">
                     CONFIRM RESERVATION
                 </button>
             </form>
@@ -774,65 +750,71 @@
                 <div class="w-14 h-14 bg-cyanGlow/20 border border-cyanGlow rounded-full flex items-center justify-center mx-auto text-cyanGlow text-2xl">
                     <i class="fa-solid fa-check"></i>
                 </div>
-                <h4 class="font-orbitron text-xl font-bold text-white">RESERVATION LOGGED</h4>
-                <p class="text-xs text-slate-300">Your test drive booking has been recorded in the VoltEra system.</p>
+                <h4 class="font-orbitron text-xl font-bold text-white">RESERVATION CONFIRMED</h4>
+                <p id="booking-details-summary" class="text-xs text-slate-300">Your test drive reservation has been logged into the VoltEra system.</p>
                 <button onclick="closeBookingModal()" class="px-6 py-2 glass-panel text-xs font-orbitron text-white rounded-xl">CLOSE</button>
             </div>
         </div>
     </div>
 
-    <!-- MODAL 2: SPECS & COLOR PREVIEW -->
-    <div id="specs-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-void/80 backdrop-blur-md">
-        <div class="glass-panel w-full max-w-xl p-8 rounded-3xl border-purpleNeon/40 relative shadow-2xl">
+    <!-- MODAL 2: TECHNICAL SPECS DYNAMIC MODAL -->
+    <div id="specs-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-void/85 backdrop-blur-md">
+        <div class="glass-panel w-full max-w-2xl p-8 rounded-3xl border-cyanGlow/40 relative shadow-2xl max-h-[90vh] overflow-y-auto">
             <button onclick="closeSpecsModal()" class="absolute top-6 right-6 text-slate-400 hover:text-white text-xl">
                 <i class="fa-solid fa-xmark"></i>
             </button>
 
-            <span class="text-[10px] font-orbitron text-purpleNeon tracking-widest">TECHNICAL SPECIFICATIONS</span>
-            <h3 id="spec-modal-title" class="font-orbitron text-2xl font-black text-white mb-6">MODEL SPECS</h3>
+            <span class="text-[10px] font-orbitron text-cyanGlow tracking-widest uppercase">Technical Overview</span>
+            <h3 id="spec-modal-title" class="font-orbitron text-3xl font-black text-white mb-6">APEX 1 SPECS</h3>
 
-            <div id="car-preview-box" class="w-full h-40 rounded-2xl bg-surfaceLight/80 border border-white/10 flex items-center justify-center relative transition-colors duration-500 mb-6">
-                <i id="car-icon-preview" class="fa-solid fa-car text-7xl text-cyanGlow transition-colors duration-300"></i>
+            <div class="relative h-64 rounded-2xl overflow-hidden mb-6 border border-white/10">
+                <img id="spec-modal-img" src="" alt="EV Spec" class="w-full h-full object-cover">
             </div>
 
-            <div class="flex items-center justify-center space-x-4 mb-6">
-                <span class="text-xs font-orbitron text-slate-400">SELECT SHADE:</span>
-                <button onclick="changeCarColor('#00f3ff')" class="w-6 h-6 rounded-full bg-cyanGlow ring-2 ring-white/20 hover:scale-110 transition-transform"></button>
-                <button onclick="changeCarColor('#ff007f')" class="w-6 h-6 rounded-full bg-magentaNeon ring-2 ring-white/20 hover:scale-110 transition-transform"></button>
-                <button onclick="changeCarColor('#e2e8f0')" class="w-6 h-6 rounded-full bg-slate-200 ring-2 ring-white/20 hover:scale-110 transition-transform"></button>
-            </div>
-
-            <div class="grid grid-cols-2 gap-4 text-xs font-orbitron">
-                <div class="p-3 bg-void/60 rounded-xl border border-white/5">
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-4 text-xs font-orbitron mb-6">
+                <div class="p-3.5 bg-void/60 rounded-xl border border-white/5">
                     <span class="text-slate-400 block text-[10px]">HORSEPOWER</span>
-                    <span id="spec-hp" class="text-white font-bold">--</span>
+                    <span id="spec-hp" class="text-white font-bold text-sm">--</span>
                 </div>
-                <div class="p-3 bg-void/60 rounded-xl border border-white/5">
+                <div class="p-3.5 bg-void/60 rounded-xl border border-white/5">
                     <span class="text-slate-400 block text-[10px]">ESTIMATED RANGE</span>
-                    <span id="spec-range" class="text-cyanGlow font-bold">--</span>
+                    <span id="spec-range" class="text-cyanGlow font-bold text-sm">--</span>
                 </div>
-                <div class="p-3 bg-void/60 rounded-xl border border-white/5">
+                <div class="p-3.5 bg-void/60 rounded-xl border border-white/5">
                     <span class="text-slate-400 block text-[10px]">0-60 ACCELERATION</span>
-                    <span id="spec-acc" class="text-white font-bold">--</span>
+                    <span id="spec-acc" class="text-white font-bold text-sm">--</span>
                 </div>
-                <div class="p-3 bg-void/60 rounded-xl border border-white/5">
-                    <span class="text-slate-400 block text-[10px]">KEY FEATURE</span>
-                    <span id="spec-feature" class="text-magentaNeon font-bold">--</span>
+                <div class="p-3.5 bg-void/60 rounded-xl border border-white/5">
+                    <span class="text-slate-400 block text-[10px]">TOP SPEED</span>
+                    <span id="spec-speed" class="text-white font-bold text-sm">--</span>
+                </div>
+                <div class="p-3.5 bg-void/60 rounded-xl border border-white/5">
+                    <span class="text-slate-400 block text-[10px]">CHARGING ARCHITECTURE</span>
+                    <span id="spec-charge" class="text-emeraldGlow font-bold text-sm">--</span>
+                </div>
+                <div class="p-3.5 bg-void/60 rounded-xl border border-white/5">
+                    <span class="text-slate-400 block text-[10px]">STARTING MSRP</span>
+                    <span id="spec-price" class="text-cyanGlow font-bold text-sm">--</span>
                 </div>
             </div>
+
+            <button onclick="closeSpecsModal(); openBookingModal(selectedModelForSpecs)" class="w-full btn-cyber py-3.5 rounded-xl font-orbitron text-xs font-bold text-white text-center tracking-widest">
+                BOOK TEST DRIVE FOR THIS MODEL
+            </button>
         </div>
     </div>
 
     <!-- JAVASCRIPT LOGIC -->
     <script>
-        // Tab Navigation Switcher
+        let selectedModelForSpecs = 'VoltEra APEX 1';
+        let selectedDateStr = '2026-11-15';
+        let selectedTimeSlotStr = '09:00 AM';
+
+        // Tab Switcher
         function switchTab(tabId) {
             document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
-            
             const activeTab = document.getElementById(`tab-${tabId}`);
-            if (activeTab) {
-                activeTab.classList.remove('hidden');
-            }
+            if (activeTab) activeTab.classList.remove('hidden');
 
             document.querySelectorAll('.nav-tab').forEach(btn => {
                 btn.classList.remove('text-cyanGlow', 'bg-white/5', 'border', 'border-cyanGlow/30');
@@ -848,7 +830,7 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // Vehicle Category Filtering
+        // Vehicle Filter
         function filterVehicles(cat) {
             document.querySelectorAll('.cat-btn').forEach(btn => {
                 btn.classList.remove('bg-cyanGlow', 'text-void');
@@ -856,8 +838,7 @@
             });
             event.target.classList.add('bg-cyanGlow', 'text-void');
 
-            const items = document.querySelectorAll('.vehicle-item');
-            items.forEach(item => {
+            document.querySelectorAll('.vehicle-item').forEach(item => {
                 if (cat === 'all' || item.dataset.category === cat) {
                     item.style.display = 'flex';
                 } else {
@@ -866,12 +847,12 @@
             });
         }
 
-        // Mobile Drawer
+        // Mobile Menu Drawer
         function toggleMobileMenu() {
             document.getElementById('mobile-drawer').classList.toggle('hidden');
         }
 
-        // FAQ Toggle
+        // FAQ Toggle Accordion
         function toggleFaq(id) {
             const el = document.getElementById(id);
             el.classList.toggle('hidden');
@@ -883,6 +864,7 @@
             document.getElementById('modal-model-select').value = modelName;
             document.getElementById('booking-form').classList.remove('hidden');
             document.getElementById('booking-success').classList.add('hidden');
+            renderCalendar();
         }
 
         function closeBookingModal() {
@@ -891,26 +873,28 @@
 
         function handleBookingSubmit(e) {
             e.preventDefault();
+            const model = document.getElementById('modal-model-select').value;
+            document.getElementById('booking-details-summary').innerText = `Your reservation for the ${model} on ${selectedDateStr} at ${selectedTimeSlotStr} has been confirmed.`;
             document.getElementById('booking-form').classList.add('hidden');
             document.getElementById('booking-success').classList.remove('hidden');
         }
 
         // Specs Modal
-        function openSpecsModal(title, hp, range, acc, feature, price) {
+        function openSpecsModal(title, hp, range, acc, speed, charge, price, imgUrl) {
+            selectedModelForSpecs = title;
             document.getElementById('specs-modal').classList.remove('hidden');
             document.getElementById('spec-modal-title').innerText = title;
             document.getElementById('spec-hp').innerText = hp;
             document.getElementById('spec-range').innerText = range;
             document.getElementById('spec-acc').innerText = acc;
-            document.getElementById('spec-feature').innerText = feature;
+            document.getElementById('spec-speed').innerText = speed;
+            document.getElementById('spec-charge').innerText = charge;
+            document.getElementById('spec-price').innerText = price;
+            document.getElementById('spec-modal-img').src = imgUrl;
         }
 
         function closeSpecsModal() {
             document.getElementById('specs-modal').classList.add('hidden');
-        }
-
-        function changeCarColor(hexColor) {
-            document.getElementById('car-icon-preview').style.color = hexColor;
         }
 
         function handleContactSubmit(e) {
@@ -919,40 +903,77 @@
             document.getElementById('contact-success').classList.remove('hidden');
         }
 
-        // Interactive Particle Web Background Canvas with Mouse Interaction
+        // Calendar Date Picker Logic
+        let currentCalDate = new Date(2026, 10, 1);
+
+        function renderCalendar() {
+            const monthNames = ["JANUARY", "FEBRUARY", "MARCH", "APRIL", "MAY", "JUNE", "JULY", "AUGUST", "SEPTEMBER", "OCTOBER", "NOVEMBER", "DECEMBER"];
+            document.getElementById('calendar-month-year').innerText = `${monthNames[currentCalDate.getMonth()]} ${currentCalDate.getFullYear()}`;
+
+            const grid = document.getElementById('calendar-days-grid');
+            grid.innerHTML = '';
+
+            const firstDayIndex = new Date(currentCalDate.getFullYear(), currentCalDate.getMonth(), 1).getDay();
+            const daysInMonth = new Date(currentCalDate.getFullYear(), currentCalDate.getMonth() + 1, 0).getDate();
+
+            for (let x = 0; x < firstDayIndex; x++) {
+                const empty = document.createElement('div');
+                grid.appendChild(empty);
+            }
+
+            for (let day = 1; day <= daysInMonth; day++) {
+                const dayBtn = document.createElement('button');
+                dayBtn.type = 'button';
+                dayBtn.innerText = day;
+                dayBtn.className = 'py-1.5 rounded-lg hover:bg-cyanGlow/20 transition-colors text-slate-300';
+                
+                if (day === 15) {
+                    dayBtn.classList.add('bg-cyanGlow', 'text-void', 'font-bold');
+                }
+
+                dayBtn.onclick = function() {
+                    document.querySelectorAll('#calendar-days-grid button').forEach(b => b.classList.remove('bg-cyanGlow', 'text-void', 'font-bold'));
+                    dayBtn.classList.add('bg-cyanGlow', 'text-void', 'font-bold');
+                    selectedDateStr = `${currentCalDate.getFullYear()}-${currentCalDate.getMonth() + 1}-${day}`;
+                };
+                grid.appendChild(dayBtn);
+            }
+        }
+
+        function changeMonth(dir) {
+            currentCalDate.setMonth(currentCalDate.getMonth() + dir);
+            renderCalendar();
+        }
+
+        function selectTimeSlot(slot, btn) {
+            document.querySelectorAll('.time-slot-btn').forEach(b => b.classList.remove('border-cyanGlow', 'bg-cyanGlow/20', 'text-cyanGlow'));
+            btn.classList.add('border-cyanGlow', 'bg-cyanGlow/20', 'text-cyanGlow');
+            selectedTimeSlotStr = slot;
+        }
+
+        // Interactive Canvas Web Background
         const canvas = document.getElementById('bg-canvas');
         const ctx = canvas.getContext('2d');
         let width = canvas.width = window.innerWidth;
         let height = canvas.height = window.innerHeight;
-
         let mouse = { x: null, y: null, radius: 150 };
 
-        window.addEventListener('mousemove', (e) => {
-            mouse.x = e.x;
-            mouse.y = e.y;
-        });
+        window.addEventListener('mousemove', (e) => { mouse.x = e.x; mouse.y = e.y; });
+        window.addEventListener('resize', () => { width = canvas.width = window.innerWidth; height = canvas.height = window.innerHeight; });
 
-        window.addEventListener('resize', () => {
-            width = canvas.width = window.innerWidth;
-            height = canvas.height = window.innerHeight;
-        });
-
-        const particles = Array.from({ length: 60 }, () => ({
+        const particles = Array.from({ length: 55 }, () => ({
             x: Math.random() * width,
             y: Math.random() * height,
             radius: Math.random() * 2 + 1,
-            vx: (Math.random() - 0.5) * 0.6,
-            vy: (Math.random() - 0.5) * 0.6,
+            vx: (Math.random() - 0.5) * 0.5,
+            vy: (Math.random() - 0.5) * 0.5,
         }));
 
         function drawParticles() {
             ctx.clearRect(0, 0, width, height);
-
             for (let i = 0; i < particles.length; i++) {
                 let p = particles[i];
-                p.x += p.vx;
-                p.y += p.vy;
-
+                p.x += p.vx; p.y += p.vy;
                 if (p.x < 0 || p.x > width) p.vx *= -1;
                 if (p.y < 0 || p.y > height) p.vy *= -1;
 
@@ -961,13 +982,9 @@
                 ctx.fillStyle = '#00f3ff';
                 ctx.fill();
 
-                // Connect nearby particles
                 for (let j = i + 1; j < particles.length; j++) {
                     let p2 = particles[j];
-                    let dx = p.x - p2.x;
-                    let dy = p.y - p2.y;
-                    let dist = Math.sqrt(dx * dx + dy * dy);
-
+                    let dist = Math.sqrt((p.x - p2.x) ** 2 + (p.y - p2.y) ** 2);
                     if (dist < 120) {
                         ctx.beginPath();
                         ctx.moveTo(p.x, p.y);
@@ -977,55 +994,18 @@
                         ctx.stroke();
                     }
                 }
-
-                // Connect to mouse cursor
-                if (mouse.x && mouse.y) {
-                    let mdx = p.x - mouse.x;
-                    let mdy = p.y - mouse.y;
-                    let mdist = Math.sqrt(mdx * mdx + mdy * mdy);
-                    if (mdist < mouse.radius) {
-                        ctx.beginPath();
-                        ctx.moveTo(p.x, p.y);
-                        ctx.lineTo(mouse.x, mouse.y);
-                        ctx.strokeStyle = `rgba(255, 0, 127, ${1 - mdist / mouse.radius})`;
-                        ctx.lineWidth = 0.8;
-                        ctx.stroke();
-                    }
-                }
             }
-
             requestAnimationFrame(drawParticles);
         }
 
-        // 3D Tilt Card Interaction
-        document.querySelectorAll('.glass-card').forEach(card => {
-            card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                const centerX = rect.width / 2;
-                const centerY = rect.height / 2;
-                const rotateX = (y - centerY) / 15;
-                const rotateY = (centerX - x) / 15;
-
-                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
-            });
-
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
-            });
-        });
-
-        // Animated Numerical Counters Function
+        // Count-Up Animations
         function animateCounters() {
             document.querySelectorAll('.counter').forEach(counter => {
                 const target = +counter.getAttribute('data-target');
                 const duration = 2000;
-                const stepTime = 20;
-                const steps = duration / stepTime;
+                const steps = duration / 20;
                 const increment = target / steps;
                 let current = 0;
-
                 const timer = setInterval(() => {
                     current += increment;
                     if (current >= target) {
@@ -1034,7 +1014,7 @@
                     } else {
                         counter.innerText = Number.isInteger(target) ? Math.floor(current) : current.toFixed(2);
                     }
-                }, stepTime);
+                }, 20);
             });
         }
 
@@ -1044,9 +1024,7 @@
             
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
+                    if (entry.isIntersecting) entry.target.classList.add('visible');
                 });
             }, { threshold: 0.1 });
 
