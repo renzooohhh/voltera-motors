@@ -12,6 +12,15 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@500;700;800;900&display=swap" rel="stylesheet">
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+      (function() {
+        emailjs.init({
+          publicKey: "Ap55Z4qTAaBJJboTM",
+        });
+      })();
+    </script>
     <script>
         tailwind.config = {
             theme: {
@@ -448,7 +457,6 @@
                         <img src="https://images.unsplash.com/photo-1508974239320-0a029497e820?auto=format&fit=crop&w=800&q=80" alt="Autonomous AI Dashboard" class="w-full h-44 sm:h-48 object-cover rounded-2xl border border-white/15">
                     </div>
                 </div>
-
                 <!-- INTERACTIVE EV RANGE & SAVINGS CALCULATOR WIDGET -->
                 <div class="glass-panel p-6 sm:p-10 rounded-3xl border-cyanGlow/40 relative overflow-hidden shadow-2xl">
                     <div class="absolute top-0 right-0 w-80 h-80 bg-cyanGlow/10 rounded-full blur-[100px] pointer-events-none"></div>
@@ -457,7 +465,6 @@
                         <h3 class="font-orbitron text-xl sm:text-3xl font-bold text-white mt-2">EV RANGE & FUEL SAVINGS CALCULATOR</h3>
                         <p class="text-xs sm:text-sm text-slate-300 mt-2">Slide your estimated daily commute to instantly calculate your annual gas savings and battery charge efficiency.</p>
                     </div>
-
                     <div class="grid md:grid-cols-12 gap-6 sm:gap-8 items-center max-w-4xl mx-auto">
                         <!-- Left Controls -->
                         <div class="md:col-span-7 space-y-4 sm:space-y-6">
@@ -669,15 +676,14 @@
             </button>
             <h3 class="font-orbitron text-xl sm:text-2xl font-bold text-white mb-1 pr-6">SCHEDULE TEST DRIVE</h3>
             <p class="text-xs text-slate-300 mb-5 sm:mb-6">Select your model, test drive date, and preferred time slot.</p>
-            <form action="https://formspree.io/f/xppdpkvn" method="POST" class="space-y-4 sm:space-y-5">
+            <form id="bookingForm" class="space-y-4 sm:space-y-5">
                 <!-- Hidden inputs so selected Date & Time are included in Formspree Email -->
                 <input type="hidden" name="form_type" value="Test Drive Reservation">
                 <input type="hidden" name="selected_date" id="input-selected-date" value="2026-11-15">
                 <input type="hidden" name="selected_time" id="input-selected-time" value="09:00 AM">
-
                 <div>
                     <label class="block text-xs font-orbitron text-slate-200 mb-1.5">VEHICLE MODEL</label>
-                    <select name="vehicle_model" id="modal-model-select" class="w-full bg-void border border-white/25 rounded-xl px-4 py-3 text-sm text-white focus:border-cyanGlow outline-none">
+                    <select name="vehicle" id="modal-model-select" class="w-full bg-void border border-white/25 rounded-xl px-4 py-3 text-sm text-white focus:border-cyanGlow outline-none">
                         <option value="VoltEra APEX 1">VoltEra APEX 1 (Hypercoupe)</option>
                         <option value="VoltEra LUMIN S">VoltEra LUMIN S (Executive Sedan)</option>
                         <option value="VoltEra TERRA X">VoltEra TERRA X (Cyber SUV)</option>
@@ -686,7 +692,7 @@
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                         <label class="block text-xs font-orbitron text-slate-200 mb-1.5">FULL NAME</label>
-                        <input type="text" name="full_name" required placeholder="John Doe" class="w-full bg-void border border-white/25 rounded-xl px-4 py-3 text-sm text-white focus:border-cyanGlow outline-none">
+                        <input type="text" name="name" required placeholder="John Doe" class="w-full bg-void border border-white/25 rounded-xl px-4 py-3 text-sm text-white focus:border-cyanGlow outline-none">
                     </div>
                     <div>
                         <label class="block text-xs font-orbitron text-slate-200 mb-1.5">EMAIL ADDRESS</label>
@@ -773,6 +779,57 @@
         let selectedDateStr = '2026-11-15';
         let selectedTimeSlotStr = '09:00 AM';
 
+        // Dual-Notification Form Submission (Formspree + EmailJS)
+        const bookingForm = document.getElementById('bookingForm');
+        if (bookingForm) {
+            bookingForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
+
+                const submitBtn = bookingForm.querySelector('button[type="submit"]');
+                const originalText = submitBtn.innerText;
+                submitBtn.innerText = "PROCESSING BOOKING...";
+                submitBtn.disabled = true;
+
+                const formData = new FormData(bookingForm);
+                const templateParams = {
+                    email: formData.get('email'),
+                    user_name: formData.get('name'),
+                    vehicle_model: formData.get('vehicle'),
+                    selected_date: formData.get('selected_date'),
+                    selected_time: formData.get('selected_time')
+                };
+
+                try {
+                    // 1. Send Admin Notification via Formspree
+                    const formspreeRes = await fetch("https://formspree.io/f/xppdpkvn", {
+                        method: "POST",
+                        body: formData,
+                        headers: { 'Accept': 'application/json' }
+                    });
+
+                    if (!formspreeRes.ok) throw new Error("Formspree submission failed");
+
+                    // 2. Send Receipt to User's Gmail via EmailJS
+                    await emailjs.send(
+                        "service_suh7mgq",
+                        "template_ubgm9y5",
+                        templateParams
+                    );
+
+                    alert("Booking Confirmed! We've sent your reservation receipt to your Gmail.");
+                    bookingForm.reset();
+                    closeBookingModal();
+
+                } catch (error) {
+                    console.error("Booking Error:", error);
+                    alert("Something went wrong while processing your booking. Please try again.");
+                } finally {
+                    submitBtn.innerText = originalText;
+                    submitBtn.disabled = false;
+                }
+            });
+        }
+
         // Tab Switcher (Desktop & Mobile Sync)
         function switchTab(tabId) {
             document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
@@ -789,7 +846,6 @@
                 activeBtn.classList.remove('text-slate-300');
                 activeBtn.classList.add('text-cyanGlow', 'bg-white/10', 'border', 'border-cyanGlow/30');
             }
-
             // Update Mobile Drawer Nav
             document.querySelectorAll('.mob-nav-tab').forEach(btn => {
                 btn.classList.remove('text-cyanGlow', 'bg-white/10', 'border', 'border-cyanGlow/30');
@@ -800,10 +856,8 @@
                 activeMobBtn.classList.remove('text-slate-200');
                 activeMobBtn.classList.add('text-cyanGlow', 'bg-white/10', 'border', 'border-cyanGlow/30');
             }
-
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
-
         // Vehicle Filter
         function filterVehicles(cat, clickedBtn) {
             document.querySelectorAll('.cat-btn').forEach(btn => {
@@ -820,7 +874,6 @@
                 }
             });
         }
-
         // Mobile Menu Drawer
         function toggleMobileMenu() {
             const drawer = document.getElementById('mobile-drawer');
@@ -835,13 +888,11 @@
                 icon.classList.add('fa-xmark');
             }
         }
-
         // FAQ Toggle Accordion
         function toggleFaq(id) {
             const el = document.getElementById(id);
             el.classList.toggle('hidden');
         }
-
         // Booking Modal
         function openBookingModal(modelName = 'VoltEra APEX 1') {
             document.getElementById('booking-modal').classList.remove('hidden');
@@ -851,7 +902,6 @@
         function closeBookingModal() {
             document.getElementById('booking-modal').classList.add('hidden');
         }
-
         // Specs Modal
         function openSpecsModal(title, hp, range, acc, speed, charge, price, imgUrl) {
             selectedModelForSpecs = title;
@@ -868,7 +918,6 @@
         function closeSpecsModal() {
             document.getElementById('specs-modal').classList.add('hidden');
         }
-
         // Interactive EV Range & Savings Calculator Logic
         function updateCalculator() {
             const miles = document.getElementById('commute-slider').value;
@@ -884,7 +933,6 @@
             const monthlyCharges = Math.max(1, Math.round((miles * 30) / 120));
             document.getElementById('calc-charges').innerText = `${monthlyCharges} Times`;
         }
-
         // Calendar Date Picker Logic
         let currentCalDate = new Date(2026, 10, 1);
         function renderCalendar() {
@@ -907,7 +955,6 @@
                 const formattedMonth = String(currentCalDate.getMonth() + 1).padStart(2, '0');
                 const formattedDay = String(day).padStart(2, '0');
                 const thisDateStr = `${currentCalDate.getFullYear()}-${formattedMonth}-${formattedDay}`;
-
                 if (thisDateStr === selectedDateStr) {
                     dayBtn.classList.add('bg-cyanGlow', 'text-void', 'font-bold');
                 }
@@ -930,7 +977,6 @@
             selectedTimeSlotStr = slot;
             document.getElementById('input-selected-time').value = slot;
         }
-
         // Interactive Canvas Web Background
         const canvas = document.getElementById('bg-canvas');
         const ctx = canvas.getContext('2d');
@@ -972,7 +1018,6 @@
             }
             requestAnimationFrame(drawParticles);
         }
-
         // Count-Up Animations
         function animateCounters() {
             document.querySelectorAll('.counter').forEach(counter => {
@@ -992,7 +1037,6 @@
                 }, 20);
             });
         }
-
         window.onload = function() {
             drawParticles();
             animateCounters();
